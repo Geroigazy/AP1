@@ -2,12 +2,10 @@ from pycoingecko import CoinGeckoAPI
 cg = CoinGeckoAPI()
 
 
-def print_crypt(coin):
+num = int(input("Enter the number: "))
+list = cg.get_coins_markets("usd")[:num] 
+n=0
+while n < len(list):
+    coin = list[n]
     print(coin['name'], "\ncost:", coin['current_price'], "$\t", "Capitalization", coin['market_cap'], "$\n")
-
-
-for i in range(1):
-    num = int(input("Enter the number: "))
-    list = cg.get_coins_markets("usd")[:num]
-    for coin in list:
-        print_crypt(coin)
+    n = n+1
